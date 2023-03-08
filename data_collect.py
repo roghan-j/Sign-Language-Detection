@@ -46,7 +46,7 @@ cap= cv2.VideoCapture(0)
 
 counter= 0
 
-folder= 'data/thankyou'
+folder= 'data/please'
 
 cap = cv2.VideoCapture(0)
 
