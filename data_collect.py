@@ -46,7 +46,7 @@ cap= cv2.VideoCapture(0)
 
 counter= 0
 
-folder= 'data/please'
+folder= 'data/heart'
 
 cap = cv2.VideoCapture(0)
 
@@ -62,7 +62,7 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
         print(results)
         
         # Draw landmarks
-        draw_styled_landmarks(image, results)
+        # draw_styled_landmarks(image, results)
 
         # Show to screen
         cv2.imshow('OpenCV Feed', image)

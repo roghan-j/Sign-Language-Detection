@@ -6,6 +6,7 @@ import math
 import time
 
 import pyttsx3
+from gtts import gTTS
 from matplotlib import pyplot as plt
 
 import mediapipe as mp
@@ -45,14 +46,16 @@ def draw_styled_landmarks(image, results):
                              )
 
 cap= cv2.VideoCapture(0)
-classifier= Classifier("model/keras_model.h5", "model/labels.txt")
+classifier= Classifier("model/model-1/keras_model.h5", "model/model-1/labels.txt")
 
-labels= ["hello", "help", "home", "i love you", "please", "thank you"]
+labels= ["fishing", "I", "love", "favourite", "hobby", "my", "you", "feel", "family", "bad", "sorry"]
 
 # Set mediapipe model 
 with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
     
     t2s= pyttsx3.init()
+    sentence= []
+    c= 0
 
     while cap.isOpened():
 
@@ -61,28 +64,35 @@ with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=
 
         # Make detections
         image, results = mediapipe_detection(frame, holistic)
-        # imgOutput= image.copy()
         
-        # Draw landmarks
-        # draw_styled_landmarks(image, results)
-
         # Show to screen
         cv2.imshow('OpenCV Feed', image)
 
         key= cv2.waitKey(1)
 
         prediction, index= classifier.getPrediction(image, draw=False)
-        cv2.putText(image, labels[index], (1, 1), cv2.FONT_HERSHEY_COMPLEX, 3, (255, 0, 255), 3)
-        print(prediction, index)
+        
+        # print(prediction, index)
         print(labels[index])
 
         key= cv2.waitKey(1)
         
+        if key == ord("c"):
+            sentence= []
+            
+        if key == ord("s"):
+            print("Storing...")
+            filename= "./voice/voice-"+str(time.time())+".mp3"
+            c+=1
+            gTTS(text=" ".join(sentence), lang="en", slow=True).save(filename)
+            
         if key == ord("v"):
-            t2s.say(labels[index])
-            t2s.runAndWait()
+            print("Appending word...")
+            sentence.append(labels[index])
+            print(sentence)
+            # t2s.say(labels[index])
+            # t2s.runAndWait()
 
-        # Break gracefully
         if cv2.waitKey(10) & key == ord('q'):
             break
 
