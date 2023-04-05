@@ -46,7 +46,7 @@ cap= cv2.VideoCapture(0)
 
 counter= 0
 
-folder= 'data/heart'
+folder= 'data/with'
 
 cap = cv2.VideoCapture(0)
 

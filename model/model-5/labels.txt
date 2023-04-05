@@ -1,0 +1,10 @@
+0 hello
+1 need
+2 talk
+3 about
+4 health
+5 feel
+6 sick
+7 cold
+8 my
+9 have

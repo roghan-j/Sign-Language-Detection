@@ -1,0 +1,7 @@
+0 clean
+1 home
+2 help
+3 thank you
+4 arrive
+5 learn
+6 start
