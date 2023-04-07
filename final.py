@@ -46,17 +46,17 @@ def draw_styled_landmarks(image, results):
                              )
 
 cap= cv2.VideoCapture(0)
-# classifier= Classifier("model/model-1/keras_model.h5", "model/model-1/labels.txt")
+classifier= Classifier("model/model-1/keras_model.h5", "model/model-1/labels.txt")
 # classifier= Classifier("model/model-2/keras_model.h5", "model/model-2/labels.txt")
 # classifier= Classifier("model/model-3/keras_model.h5", "model/model-3/labels.txt")
 # classifier= Classifier("model/model-4/keras_model.h5", "model/model-4/labels.txt")
-classifier= Classifier("model/model-5/keras_model.h5", "model/model-5/labels.txt")
+# classifier= Classifier("model/model-5/keras_model.h5", "model/model-5/labels.txt")
 
-# labels= ["fishing", "I", "love", "favourite", "hobby", "my", "you", "feel", "family", "bad", "sorry"]
+labels= ["fishing", "I", "love", "favourite", "hobby", "my", "you", "feel", "family", "bad", "sorry"]
 # labels= ["I love you", "heart", "my", "home", "I", "live", "inside", "beautiful"]
 # labels= ["clean", "home", "help", "thank you", "arrive", "learn", "start"]
 # labels= ["love", "go", "with", "you", "good", "day", "I", "think", "happen"]
-labels= ["hello", "need", "talk", "about", "health", "feel", "sick", "cold", "my", "have"]
+# labels= ["hello", "need", "talk", "about", "health", "feel", "sick", "cold", "my", "have"]
 
 # Set mediapipe model 
 with mp_holistic.Holistic(min_detection_confidence=0.5, min_tracking_confidence=0.5) as holistic:
